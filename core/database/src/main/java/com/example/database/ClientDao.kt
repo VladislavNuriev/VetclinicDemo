@@ -16,6 +16,9 @@ interface ClientDao {
     @Query("DELETE FROM clients WHERE phone = :phone")
     suspend fun deleteClientByPhone(phone: String)
 
+    @Query("SELECT * FROM clients WHERE phone =:phone")
+    suspend fun getClient(phone: String): ClientEntity
+
     @Query("SELECT * FROM clients WHERE phone LIKE '%' || :query || '%' OR lastName LIKE '%' || :query || '%'")
     fun searchClients(query: String): Flow<List<ClientEntity>>
 
