@@ -23,7 +23,4 @@ data class AppointmentEntity(
     val doctorLastName: String,
     val doctorSpecialization: String,
     val description: String? = null,
-    val diagnosis: String? = null,
-    val prescribedTreatment: String? = null,
-    val notes: String? = null
 )
