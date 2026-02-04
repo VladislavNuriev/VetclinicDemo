@@ -17,7 +17,7 @@ import androidx.room.PrimaryKey
 )
 data class MedicalCardEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Int = 0,
     val ownerPhone: String,
     val petName: String,
     val species: String,

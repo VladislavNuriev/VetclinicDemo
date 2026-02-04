@@ -17,10 +17,10 @@ import androidx.room.PrimaryKey
 )
 data class AppointmentEntity(
     @PrimaryKey(autoGenerate = true)
-    val id:Int,
+    val id:Int = 0,
     val medicalCardId: Int,
     val dateTime: Long,
     val doctorLastName: String,
     val doctorSpecialization: String,
-    val description: String? = null,
+    val description: String = "",
 )

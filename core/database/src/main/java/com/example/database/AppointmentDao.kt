@@ -2,7 +2,6 @@ package com.example.database
 
 import androidx.room.*
 import com.example.database.models.AppointmentEntity
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface AppointmentDao {
@@ -11,11 +10,11 @@ interface AppointmentDao {
     suspend fun insertAppointment(appointment: AppointmentEntity)
 
     @Query("DELETE FROM appointments WHERE id = :id")
-    suspend fun deleteAppointmentById(id: String)
+    suspend fun deleteAppointmentById(id: Int)
 
     @Query("SELECT * FROM appointments WHERE id = :id")
-    fun getAppointmentById(id: String): Flow<AppointmentEntity?>
+    suspend fun getAppointmentById(id: Int): AppointmentEntity
 
     @Query("SELECT * FROM appointments WHERE medicalCardId = :medicalCardId ORDER BY dateTime DESC")
-    fun getAppointmentsByMedicalCardId(medicalCardId: String): Flow<List<AppointmentEntity>>
+    suspend fun getAppointmentsByMedicalCardId(medicalCardId: Int): List<AppointmentEntity>
 }

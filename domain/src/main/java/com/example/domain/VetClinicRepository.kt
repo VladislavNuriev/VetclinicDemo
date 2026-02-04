@@ -16,11 +16,11 @@ interface VetClinicRepository {
         // Medical cards
         suspend fun insertMedicalCard(medicalCard: MedicalCard)
         suspend fun updateMedicalCard(medicalCard: MedicalCard)
-        fun getMedicalCards(clientPhone: String): Flow<List<MedicalCard>>
+        suspend fun getMedicalCards(clientPhone: String): Result<List<MedicalCard>>
 
         // Appointments
         suspend fun insertAppointment(appointment: Appointment)
-        suspend fun deleteAppointment(id: String)
-        fun getAppointmentById(id: String): Flow<Appointment?>
-        fun getAppointmentsByMedicalCardId(medicalCardId: String): Flow<List<Appointment>>
+        suspend fun deleteAppointment(id: Int)
+        suspend fun getAppointmentById(id: Int): Appointment
+        suspend fun getAppointmentsByMedicalCardId(medicalCardId: Int): List<Appointment>
 }

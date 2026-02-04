@@ -1,14 +1,13 @@
 package com.example.domain
 
 import com.example.domain.models.MedicalCard
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 
 class GetMedCardUseCase @Inject constructor(
     private val repository: VetClinicRepository
 ) {
-    operator fun invoke(phone: String): Flow<List<MedicalCard>> {
+    suspend operator fun invoke(phone: String): Result<List<MedicalCard>> {
         return repository.getMedicalCards(phone)
     }
 }

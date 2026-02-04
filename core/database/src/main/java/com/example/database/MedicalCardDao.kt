@@ -2,7 +2,6 @@ package com.example.database
 
 import androidx.room.*
 import com.example.database.models.MedicalCardEntity
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MedicalCardDao {
@@ -14,5 +13,5 @@ interface MedicalCardDao {
     suspend fun updateMedicalCard(medicalCard: MedicalCardEntity)
 
     @Query("SELECT * FROM medical_cards WHERE ownerPhone = :clientPhone")
-    fun getMedicalCardsByClient(clientPhone: String): Flow<List<MedicalCardEntity>>
+    suspend fun getMedicalCardsByClient(clientPhone: String): List<MedicalCardEntity>
 }
