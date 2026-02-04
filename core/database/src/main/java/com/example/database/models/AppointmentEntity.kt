@@ -1,0 +1,29 @@
+package com.example.database.models
+
+import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.PrimaryKey
+
+@Entity(
+    tableName = "appointments",
+    foreignKeys = [
+        ForeignKey(
+            entity = MedicalCardEntity::class,
+            parentColumns = ["id"],
+            childColumns = ["medicalCardId"],
+            onDelete = ForeignKey.CASCADE
+        )
+    ],
+)
+data class AppointmentEntity(
+    @PrimaryKey(autoGenerate = true)
+    val id:Int,
+    val medicalCardId: Int,
+    val dateTime: Long,
+    val doctorLastName: String,
+    val doctorSpecialization: String,
+    val description: String? = null,
+    val diagnosis: String? = null,
+    val prescribedTreatment: String? = null,
+    val notes: String? = null
+)
