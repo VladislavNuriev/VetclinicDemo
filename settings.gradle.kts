@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Vetclinic Demo"
 include(":app")
+include(":core:database")
+include(":domain")
