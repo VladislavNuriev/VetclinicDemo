@@ -21,12 +21,5 @@ data class MedicalCardEntity(
     val ownerPhone: String,
     val petName: String,
     val species: String,
-    val breed: String? = null,
     val age: Int,
-    val gender: String, // пол: "MALE", "FEMALE"
-    val color: String? = null,
-    val weight: Float? = null,
-    val chipNumber: String? = null,
-    val nextAppointmentDate: Long? = null, // timestamp ближайшего приема
-    val createdAt: Long = System.currentTimeMillis()
 )
