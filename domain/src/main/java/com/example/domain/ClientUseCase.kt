@@ -4,11 +4,19 @@ import com.example.domain.models.Client
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class SearchClient @Inject constructor(
+class SearchClientUseCase @Inject constructor(
     private val repository: VetClinicRepository
 ) {
     operator fun invoke(query: String): Flow<List<Client>> {
         return repository.searchClient(query)
+    }
+}
+
+class GetAllClientsUseCase @Inject constructor(
+    private val repository: VetClinicRepository
+) {
+    operator fun invoke(): Flow<List<Client>> {
+        return repository.getAllClients()
     }
 }
 
