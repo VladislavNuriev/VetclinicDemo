@@ -1,6 +1,5 @@
 package com.example.clients.ui
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -18,7 +16,6 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -35,15 +32,11 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
@@ -116,8 +109,6 @@ fun ClientsScreen(
                     modifier = Modifier.weight(1f)
                 )
             }
-
-            // Кнопка добавления (альтернатива FAB)
             Button(
                 onClick = onAddClientClick,
                 modifier = Modifier
@@ -142,16 +133,11 @@ private fun SearchBar(
     onQueryChange: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var text by remember { mutableStateOf(query) }
     val keyboardController = LocalSoftwareKeyboardController.current
     val focusRequester = remember { FocusRequester() }
 
-    LaunchedEffect(query) {
-        text = query
-    }
-
     TextField(
-        value = text,
+        value = query,
         onValueChange = {
             onQueryChange(it)
         },
@@ -162,7 +148,7 @@ private fun SearchBar(
             )
         },
         placeholder = {
-            Text("Поиск по имени, фамилии или телефону")
+            Text("Поиск по фамилии или телефону")
         },
         singleLine = true,
         keyboardOptions = KeyboardOptions(
@@ -182,7 +168,6 @@ private fun SearchBar(
         modifier = modifier
             .fillMaxWidth()
             .focusRequester(focusRequester)
-            .clip(RoundedCornerShape(16.dp))
     )
 }
 
@@ -238,7 +223,6 @@ private fun ClientCard(
                 .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Информация о клиенте
             Column(
                 modifier = Modifier.weight(1f)
             ) {

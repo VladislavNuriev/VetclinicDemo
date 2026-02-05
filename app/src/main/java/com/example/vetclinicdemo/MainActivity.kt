@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.clients.ui.ClientsScreen
+import com.example.new_client.ui.NewClientScreen
 import com.example.vetclinicdemo.ui.theme.VetclinicDemoTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,10 +23,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             VetclinicDemoTheme {
-                ClientsScreen(
-                    onAddClientClick = {},
-                    onClientClick = {}
-                )
+                NavGraph()
             }
         }
     }
